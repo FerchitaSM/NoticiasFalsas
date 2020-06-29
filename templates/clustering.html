@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{%block content %}
+
+<h1 style="text-shadow:1px 1px 0 #1db122">
+    Clustering
+</h1>
+<br><br>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    <pre style="text-shadow:1px 1px 0 #1db122">
+        {{ messages[0]}}
+    </pre>
+
+{% endif %}
+{% endwith %}
+
+<br>
+<img id="imgElem1"></img>
+<br>
+
+<br>
+<img id="imgElem2"></img>
+<br>
+
+<br>
+<img id="imgElem3"></img>
+<br>
+
+<br>
+<img id="imgElem4"></img>
+<br>
+
+<br>
+<img id="imgElem5"></img>
+<br>
+
+ 
+<button 
+class="w3-button w3-green" 
+type="submit" 
+id="img"
+onclick="mostrarGraficos()">
+Mostrar graficos
+</button> 
+
+<script>
+
+    function mostrarGraficos(){
+        var i;
+        for (i = 1; i <= 5; i++) {
+            mostrarGrafico(i);
+        };
+    }
+
+    function mostrarGrafico(i){
+
+        var arrayData = new Array();
+        var archivoTxt = new XMLHttpRequest();
+        var fileRuta = 'static/images/plotp'+i.toString()+'.txt';
+        archivoTxt.open("GET", fileRuta, false);
+        archivoTxt.send(null);
+        var uri = archivoTxt.responseText;
+        
+        if (i==1) {
+            imgElem1.setAttribute('src', "data:image/jpg;base64," + uri);
+        } else if( i ==2){
+            imgElem2.setAttribute('src', "data:image/jpg;base64," + uri);
+
+        } else if( i ==3){
+            imgElem3.setAttribute('src', "data:image/jpg;base64," + uri);
+
+        } else if( i ==4){
+            imgElem4.setAttribute('src', "data:image/jpg;base64," + uri);
+
+        } else if( i ==5){
+            imgElem5.setAttribute('src', "data:image/jpg;base64," + uri);
+        }
+           
+    }
+</script>
+
+
+
+
+        
+    
+
+
+{% endblock %}

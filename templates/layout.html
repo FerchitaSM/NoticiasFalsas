@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mi Detector</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Neddy">
+
+    <!-- Boostrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Css    -->
+            <link rel="stylesheet" href="{{url_for('static',filename='css/main17.css')}}">
+    <!-- W3.CSS-->
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Mi Detector</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Detector</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/clustering">Clustering</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/svm">CVM</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">Nosotros</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {%block content %}
+        {% endblock %}
+    </div>
+
+
+</body>
+
+</html>

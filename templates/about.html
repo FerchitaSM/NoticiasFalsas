@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{%block content %}
+
+
+<h1 style="text-shadow:1px 1px 0 #1db122">
+    Detector de noticias falsas en python
+</h1>
+<br><br>
+
+
+<div class="w3-card">
+    <p><i>
+        Este proyecto fue hecho exclusivamente para la materia de sistemas inteligentes.
+        Intentamos plasmar parte del conocimiento adquirido por nuestra ingeniera Paola Carranza quien nos enseno de una manera didactica y siempre con mucho interes todos los temas.
+        <br>La apreciamos mucho ingeniera.
+    </i></p>
+</div> 
+<br><br>
+
+<h4 style="text-shadow:1px 1px 0 #1db122">
+    Para este proyecto se uso:
+</h4>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="https://i.ibb.co/NK7gfjH/scikitlear.png" style="width:100%">
+  <img class="mySlides" src="https://i.ibb.co/QJxx4qP/python-logo.png" style="width:100%">
+  <img class="mySlides" src="https://i.ibb.co/Nt06rt3/apis.png" style="width:100%">
+  <img class="mySlides" src="https://i.ibb.co/0XM5Dm7/numpy.png" style="width:100%">
+  <img class="mySlides" src="https://i.ibb.co/qRmmXN8/pandas.png" style="width:100%">
+  <img class="mySlides" src="https://i.ibb.co/59246Tc/flask.png" style="width:100%">
+</div>
+
+<script>
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+</script>
+<br><br>
+
+<h4 style="text-shadow:1px 1px 0 #1db122">
+    Presione para ver el informe
+</h4>
+<div align="center">
+    <button  class="w3-button w3-green">
+        <a href="https://drive.google.com/file/d/1sJW9u4OuuOnJNZBZIMAOU2fOzc9V12sW/view?usp=sharing" download="informe">
+            Descargar Archivo
+            </a>
+    </button>     
+</div>
+
+{% endblock %}

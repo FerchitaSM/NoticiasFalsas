@@ -1,0 +1,183 @@
+{% extends "layout.html" %}
+
+
+
+{%block content %}  
+        <h1 style="text-shadow:1px 1px 0 #1db122">
+            Detector de noticias falsas en python
+        </h1>
+    <br><br>
+
+
+    <form action="/noticia" method="POST">
+
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Titulo de la noticia
+        </label>
+        <input 
+            name="titulo"
+            class="form-control" 
+            id="title" 
+            placeholder="Titulo de la noticia">
+        
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Origen de la noticia
+        </label>
+
+        <select name="origen" id="origen" class="form-control" >
+            <option value="4">La Paz</option>
+            <option value="5">Oruro</option>
+            <option value="6">Potosi</option>
+            <option value="3">Cochabamba</option>
+            <option value="7">Chuquisaca</option>
+            <option value="9">Tarija</option>
+            <option value="2">Beni</option>
+            <option value="8">Pando</option>
+            <option value="1">Santa Cruz</option>
+        </select>
+        
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Fecha de la noticia
+        </label>
+
+        <input 
+            class="form-control" 
+            id="date" 
+            name="date" 
+            placeholder="MM/DD/YYYY" 
+            type="text"/>
+        
+          
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Cantidad de vistos
+        </label>
+        <input 
+            name="vistos"
+            class="form-control" 
+            id="title" 
+            placeholder="Titulo de la noticia">
+        
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Red social
+        </label>
+
+        <select name="red" id="red" class="form-control" >
+            <option value="1">Facebook</option>
+            <option value="2">Pagina</option>
+            <option value="3">Periodico</option>
+            <option value="4">Periodico</option>
+            <option value="5">Twitter</option>
+            <option value="6">Whatsapp</option>
+        </select>
+
+        <label style="text-shadow:1px 1px 0 #1db122">
+            Cantidad de comentarios
+        </label>
+        <input 
+            name="comentarios"
+            class="form-control" 
+            id="title" 
+            placeholder="Titulo de la noticia">
+        <br>
+
+        <button 
+            class="w3-button w3-green" 
+            type="submit" 
+            onclick="mostrarBarra('progressbar')">
+            Analizar
+        </button> 
+    </form>
+
+
+    <div id="progressbar" class="w3-container" style="display: none">
+
+        <div class="w3-light-grey">
+          <div id="myBar" class="w3-green" style="height:24px;width:0"></div>
+        </div>
+    </div>
+    <br><br>
+  
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% if messages[0]=='0' %}
+                <div class="alert alert-success" role="alert" id="Verdadero" >
+                    <h4 class="alert-heading">Verdadero!</h4>
+                    <p>Esta noticia es verdadera</p>
+                    <hr>
+                </div>
+            {% endif %}
+            {% if messages[0]=='1' %}
+                <div class="alert alert-danger" role="alert" id="Falso">
+                    <h4 class="alert-heading">Falso!</h4>
+                    <p>Esta noticia es falsa</p>
+                    <hr>     
+                </div>
+            {% endif %}  
+        {% endif %}
+    {% endwith %}
+
+
+
+
+
+
+
+
+
+
+    
+<!-- Fecha-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+</script>
+
+<!-- Ocultar y mostrar-->
+<script>
+    function ocultar(progressbar){
+        document.getElementById(progressbar).style.display = 'none';
+    }
+
+    function mostrar(obj){
+        document.getElementById(obj).style.display = 'block';
+    }  
+    function mostrarBarra(obj){
+        document.getElementById(obj).style.display = 'block';
+        move();
+    }   
+
+
+</script>
+
+<!-- Barra-->
+  <script>
+  function move() {
+    var elem = document.getElementById("myBar");   
+    var width = 1;
+    var id = setInterval(frame, 100);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+      }
+    }
+  }
+  </script>
+
+
+
+{% endblock %}
